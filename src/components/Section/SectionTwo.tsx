@@ -1,7 +1,7 @@
 import CoupleCards from "@/components/couple-cards";
 import Image from 'next/image';
 
-import hero from '@/assets/hero.webp';
+import hero from '@/assets/SN_07172.jpg';
 import {Spacer} from "@nextui-org/react";
 
 export default function SectionTwo() {

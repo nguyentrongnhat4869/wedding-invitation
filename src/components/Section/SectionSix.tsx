@@ -37,7 +37,7 @@ export default function SectionSix() {
                                 className="relative w-64 h-64  overflow-hidden border-4 border-white bg-pink-100">
                                 <Image
                                     src={huyen}
-                                    alt="Đỗ Trung Huyên"
+                                    alt="Trọng Nhật"
                                     className="object-cover"
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 />
@@ -45,7 +45,7 @@ export default function SectionSix() {
 
                             <div className="text-center">
                                 <h2 className="text-3xl md:text-4xl font-bold   mb-4">
-                                    Đỗ Trung Huyên
+                                    Nguyễn Trọng Nhật
                                 </h2>
                                 <div className=" text-xl space-y-2 font-bold">
                                     <p>STK: 2224154678</p>
@@ -68,7 +68,7 @@ export default function SectionSix() {
                                 className="relative w-64 h-64 overflow-hidden border-4 border-white bg-pink-100">
                                 <Image
                                     src={phuong}
-                                    alt="Nguyễn Thị Phượng"
+                                    alt="Thảo Anh"
                                     className="object-cover"
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 />
@@ -76,7 +76,7 @@ export default function SectionSix() {
 
                             <div className="text-center">
                                 <h2 className="text-3xl md:text-4xl font-bold font-dancing-script  mb-4">
-                                    Nguyễn Thị Phượng
+                                    Trần Thị Thảo Anh
                                 </h2>
                                 <div className=" text-xl space-y-2 font-bold">
                                     <p>STK: 4520703048</p>

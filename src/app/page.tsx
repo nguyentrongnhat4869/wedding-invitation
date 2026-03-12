@@ -5,7 +5,6 @@ import SectionThree from "@/components/Section/SectionThree";
 import SectionFour from "@/components/Section/SectionFour";
 import SpotifyButton from "@/components/SpotifyButton";
 import SectionFive from "@/components/Section/SectionFive";
-import SectionSix from "@/components/Section/SectionSix";
 import SectionSeven from "@/components/Section/SectionSeven";
 
 export default function Home() {
@@ -14,10 +13,8 @@ export default function Home() {
             <Slider>
                 <SectionOne/>
                 <SectionTwo/>
-                <SectionThree/>
                 <SectionFour/>
                 <SectionFive/>
-                <SectionSix/>
                 <SectionSeven/>
             </Slider>
 

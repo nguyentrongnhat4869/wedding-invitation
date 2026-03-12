@@ -26,12 +26,12 @@ const CountDown = dynamic(() => import("@/components/CountDown"), {
     ssr: false,
 });
 
-import hero from "@/assets/hero.webp";
+import hero from "@/assets/SN_06220.jpg";
 
 
 export default function SectionOne() {
     const calculateTimeLeft = () => {
-        const targetDate = new Date('2024-12-26T15:00:00').getTime(); // Ngày 26/12
+        const targetDate = new Date('2026-04-06T15:00:00').getTime(); // Ngày 06/04/2026 lúc 15:00:00
         const currentTime = new Date().getTime();
         const difference = targetDate - currentTime;
 
@@ -111,19 +111,12 @@ export default function SectionOne() {
             >
                 <div className="flex flex-col justify-center items-center ">
                     <h1 className="md:text-8xl text-4xl font-bold text-blue-300 mt-10 md:mt-56 text-center sm:text-left --font-geist-mono">
-                        <span className="block sm:inline --font-geist-mono">Trung Huyên</span>
+                        <span className="block sm:inline --font-geist-mono">Trọng Nhật </span>
                         <span className="block sm:inline">&hearts;</span>
-                        <span className="block sm:inline">Nguyễn Phượng</span>
+                        <span className="block sm:inline">Thảo Anh</span>
                     </h1>
                     <p className="text-2xl sm:text-4xl mt-2 text-white flex items-center motion-preset-confetti motion-duration-1500 motion-delay-2000">
                         We’re getting married
-                        <Image
-                            src={"/wedding.gif"}
-                            alt="Wedding"
-                            width={20}
-                            height={20}
-                            className="ml-2 sm:ml-4"
-                        />
                     </p>
                     <div className={"w-full h-full"}>
                         <div className="flex flex-row w-full h-60">

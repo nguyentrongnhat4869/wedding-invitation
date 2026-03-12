@@ -6,7 +6,7 @@ import {Calendar, MapPin} from "lucide-react";
 import Image from "next/image";
 
 import {Link} from "@nextui-org/link";
-import hero from "@/assets/hero.webp";
+import hero from "@/assets/SN_05929.jpg";
 
 export default function SectionFive() {
     return (
@@ -49,15 +49,15 @@ export default function SectionFive() {
 
                             <div className="flex items-center justify-center gap-2 text-lg mb-4 text-black">
                                 <Calendar className="w-5 h-5 flex-shrink-0"/>
-                                <span>09:00 26/12/2024</span>
+                                <span>16:00 05/04/2026</span>
                             </div>
 
                             <Link
-                                href="https://maps.app.goo.gl/TD8yiC5La4z65GYr7"
+                                href="https://maps.app.goo.gl/AnmAyxPizFMyXfFv7"
                                 className="flex items-center justify-center gap-2 text-lg mb-6"
                             >
                                 <MapPin className="w-5 h-5 flex-shrink-0 mt-1"/>
-                                <span>An Thái, Bình Mỹ, Bình Lục, Hà Nam</span>
+                                <span>Số 184, Đường 422, Trường THCS Đức Giang, xã Hoài Đức, TP Hà Nội</span>
                             </Link>
                         </CardBody>
 
@@ -91,16 +91,16 @@ export default function SectionFive() {
 
                             <div className="flex items-center justify-center gap-2 text-lg mb-4 text-black">
                                 <Calendar className="w-5 h-5 flex-shrink-0"/>
-                                <span>09:00 26/12/2024</span>
+                                <span>10:30 05/04/2026</span>
                             </div>
 
                             <Link
-                                href="https://maps.app.goo.gl/y9JLbYP9AB4zLdLs6"
+                                href="https://maps.app.goo.gl/YUeV6Go6HcvMCcHq9"
                                 className="flex items-center justify-center gap-2 text-lg mb-6"
                             >
                                 <MapPin className="w-5 h-5 flex-shrink-0 mt-1"/>
                                 <span
-                                    className="flex-1">Xóm 4, Thôn Hoà Trúc, Xã Hoà Thạch, Huyện Quốc Oai, TP Hà Nội</span>
+                                    className="flex-1">Xóm Cổng Cuối, Thôn Yên Viên, Xã Phù Đổng, TP Hà Nội</span>
                             </Link>
                         </CardBody>
 

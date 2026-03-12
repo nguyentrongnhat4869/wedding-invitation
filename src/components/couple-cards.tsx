@@ -5,8 +5,8 @@ import { motion, useInView } from "motion/react"
 import Image from "next/image"
 import { Card, CardHeader, CardBody } from "@nextui-org/card"
 
-import bride from "@/assets/bride.png"
-import groom from "@/assets/groom.png"
+import bride from "@/assets/bride_TA.png"
+import groom from "@/assets/groom_Nhat.png"
 
 export default function CoupleCards() {
     const ref = useRef(null)
@@ -44,7 +44,7 @@ export default function CoupleCards() {
                                 {/* Image container */}
                                 <div className="relative w-full h-full rounded-full bg-pink-100 ">
                                     <Image
-                                        src={"/groom.png"}
+                                        src={"/groom_Nhat.png"}
                                         alt={"Chú rể"}
                                         fill
                                         priority
@@ -73,18 +73,11 @@ export default function CoupleCards() {
                         >
                             <div>
                                 <h2 className="text-3xl md:text-4xl text-white mb-2 md:mb-4">
-                                    Đỗ Trung Huyên
+                                    Trọng Nhật
                                 </h2>
-                                <div className="text-white text-lg md:text-xl space-y-1 md:space-y-2">
-                                    <p>Con ông: Đỗ Trung Việt</p>
-                                    <p>Con bà: Nguyễn Thị Bằng</p>
-                                </div>
+                                
                             </div>
-                            <p className="mt-3 md:mt-4 text-white text-sm max-w-sm mx-auto leading-relaxed">
-                                Là một người thân thiện, hòa đồng. Thích đi du lịch, thích kiếm tiền và tiêu
-                                tiền. Đặc biệt là &quot;Thích Phượng&quot;. Luôn coi trọng tình cảm và yêu thương
-                                gia đình.
-                            </p>
+                            
                         </motion.div>
                     </CardBody>
                     <div className="absolute top-10 left-5 w-16 h-16 border-l-3 border-t-3 border-pink-200"/>
@@ -114,8 +107,8 @@ export default function CoupleCards() {
                     </CardHeader>
                     <CardBody className="flex flex-col items-center gap-4 md:gap-6 flex-grow overflow-hidden">
                         <motion.div
-                            initial={{scale: 0.8, opacity: 0}}
-                            animate={isInView ? {scale: 1, opacity: 1} : {scale: 0.8, opacity: 0}}
+                            initial={{scale: 0.9, opacity: 0}}
+                            animate={isInView ? {scale: 1, opacity: 1} : {scale: 0.9, opacity: 0}}
                             transition={{delay: 0.3, duration: 0.5}}
                             className="relative w-48 h-48 md:w-64 md:h-64"
                         >
@@ -153,18 +146,10 @@ export default function CoupleCards() {
                         >
                             <div>
                                 <h2 className="text-3xl md:text-4xl font-dancing-script text-white mb-2 md:mb-4">
-                                    Nguyễn Thị Phượng
+                                    Thảo Anh
                                 </h2>
-                                <div className="text-white text-lg md:text-xl space-y-1 md:space-y-2">
-                                    <p>Con ông: Nguyễn Quang Lô</p>
-                                    <p>Con bà: Hoàng Thị Vang</p>
-                                </div>
                             </div>
-                            <p className="mt-3 md:mt-4 text-white text-sm max-w-sm mx-auto leading-relaxed">
-                                Là một người hay cười nhưng lại sống nội tâm và hay khóc thầm, không thích gặp
-                                nhiều người nhưng thích đi chơi, thích đi du lịch, không thích trồng hoa nhưng
-                                thích cắm hoa. Và mình cũng cực thích Huyên; nữa :3
-                            </p>
+                            
                         </motion.div>
                     </CardBody>
 

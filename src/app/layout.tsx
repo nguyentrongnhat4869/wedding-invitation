@@ -15,12 +15,12 @@ const geistSans = localFont({
 });
 
 export const metadata: Metadata = {
-    title: "Huyên & Phượng",
-    description: "Đám cưới của Huyên và Phượng",
+    title: "Thảo Anh & Trọng Nhật",
+    description: "Đám cưới của Thảo Anh và Trọng Nhật",
     openGraph: {
         images: [
             {
-                url: '/og_image.webp',
+                url: '/shared-image.webp',
                 width: 1200,
                 height: 630,
             },

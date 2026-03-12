@@ -12,7 +12,7 @@ export default function SectionSeven() {
             <div className="absolute inset-0">
                 <Image
                     loading={"eager"}
-                    src={"/NHO04177.JPG"}
+                    src={"/DN209819.JPG"}
                     alt="Hero Image"
                     layout="fill"
                     objectFit="cover"
