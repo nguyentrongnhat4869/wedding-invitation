@@ -1,168 +1,158 @@
 "use client"
 
-import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { Button, Card, Divider, Input, Link, Spacer, Textarea } from "@nextui-org/react";
-import { SendIcon } from "lucide-react";
-import { CardBody, CardFooter, CardHeader } from "@nextui-org/card";
-import { motion, AnimatePresence } from "framer-motion";
+import {Button, Card, Divider, Input, Link, Spacer, Textarea, ScrollShadow} from "@nextui-org/react";
+import {SendIcon} from "lucide-react";
+import {CardBody, CardFooter, CardHeader} from "@nextui-org/card";
+import {useState, useEffect} from "react";
+
+interface Wish {
+    id: number;
+    name: string;
+    message: string;
+    createdAt: string;
+}
 
 export default function SectionSeven() {
     const [name, setName] = useState("");
-    const [feedback, setFeedback] = useState("");
-    const [wishes, setWishes] = useState([]);
+    const [message, setMessage] = useState("");
+    const [wishes, setWishes] = useState<Wish[]>([]);
+    const [showWishes, setShowWishes] = useState(false);
 
-    // 1. Lấy lời chúc từ localStorage khi vừa load trang
+    // Load wishes từ localStorage khi mount
     useEffect(() => {
-        const saved = localStorage.getItem("wedding_wishes");
-        if (saved) {
-            setWishes(JSON.parse(saved));
+        const stored = localStorage.getItem("wedding-wishes");
+        if (stored) {
+            const parsed = JSON.parse(stored) as Wish[];
+            setWishes(parsed);
+            if (parsed.length > 0) setShowWishes(true);
         }
     }, []);
 
-    // 2. Hàm xử lý khi bấm nút Gửi
-    const handleSubmit = (e) => {
-        if (e) e.preventDefault();
-        if (!name.trim() || !feedback.trim()) return;
+    // Sync wishes vào localStorage mỗi khi thay đổi
+    useEffect(() => {
+        if (wishes.length > 0) {
+            localStorage.setItem("wedding-wishes", JSON.stringify(wishes));
+        }
+    }, [wishes]);
 
-        const newWish = {
+    const handleSubmit = () => {
+        if (!name.trim() || !message.trim()) return;
+
+        const newWish: Wish = {
             id: Date.now(),
-            name: name,
-            content: feedback,
-            time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+            name: name.trim(),
+            message: message.trim(),
+            createdAt: new Date().toLocaleString("vi-VN"),
         };
 
-        const updatedWishes = [newWish, ...wishes].slice(0, 10); // Lưu tối đa 10 lời chúc gần nhất
-        setWishes(updatedWishes);
-        localStorage.setItem("wedding_wishes", JSON.stringify(updatedWishes));
-
-        // Reset form
+        setWishes((prev) => [newWish, ...prev]);
+        setShowWishes(true);
         setName("");
-        setFeedback("");
+        setMessage("");
     };
 
     return (
-        <div className="w-screen h-screen relative overflow-y-auto bg-[#FFFFF0]">
-            {/* Background Image */}
-            <div className="fixed inset-0">
+        <div className="w-screen h-screen relative overflow-y-scroll md:overflow-y-hidden bg-[#FFFFF0]">
+            <div className="absolute inset-0">
                 <Image
                     loading={"eager"}
                     src={"/DN209819.JPG"}
                     alt="Hero Image"
-                    fill
-                    className="object-cover"
+                    layout="fill"
+                    objectFit="cover"
                     quality={20}
                 />
             </div>
-            
             <div className="absolute inset-0 bg-black bg-opacity-75"></div>
 
-            <div className="relative w-full min-h-screen flex flex-col items-center px-4 py-10">
-                <Spacer y={24} />
+            <div className="relative w-full min-h-screen flex flex-col md:flex-row justify-start items-start px-4 mt-2">
+                {/* Cột trái: Form gửi lời chúc */}
+                <div className={`flex flex-col items-center w-full transition-all duration-700 ease-in-out ${
+                    showWishes ? "md:w-1/2" : "md:w-full"
+                }`}>
+                    <Spacer y={24}/>
+                    <h1 className="text-3xl md:text-4xl font-bold text-white mb-2 text-center">
+                        Gửi đến lời chúc tốt đẹp nhất đến cặp đôi
+                    </h1>
+                    <Spacer y={2}/>
 
-                <h1 className="text-2xl md:text-4xl font-bold text-white mb-8 text-center px-2">
-                    Gửi đến lời chúc tốt đẹp nhất đến cặp đôi
-                </h1>
+                    <Card
+                        className="flex w-full max-w-sm flex-col items-center justify-center bg-pink-200"
+                    >
+                        <CardHeader>
+                            <h4 className="text-2xl font-semibold text-pink-700">Gửi lời chúc</h4>
+                        </CardHeader>
+                        <CardBody className="space-y-4">
+                            <Input
+                                className="text-3xl"
+                                label="Họ và tên"
+                                aria-label="Name"
+                                name="name"
+                                placeholder="Nhập tên của bạn"
+                                value={name}
+                                onValueChange={setName}
+                            />
+                            <Textarea
+                                aria-label="Feedback"
+                                name="feedback"
+                                placeholder="Nhập lời chúc của bạn"
+                                value={message}
+                                onValueChange={setMessage}
+                            />
+                        </CardBody>
 
-                {/* Container 2 cột: Trái là Form, Phải là Lời chúc */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-6xl items-start">
-                    
-                    {/* BÊN TRÁI: FORM GỬI LỜI CHÚC */}
-                    <div className="flex justify-center lg:justify-end w-full">
-                        <Card
-                            as="form"
-                            onSubmit={handleSubmit}
-                            className="w-full max-w-sm bg-pink-100 shadow-2xl"
-                        >
-                            <CardHeader className="justify-center pb-0 pt-6">
-                                <h4 className="text-2xl font-bold text-pink-700">Gửi lời chúc</h4>
-                            </CardHeader>
-                            <CardBody className="space-y-4 px-6">
-                                <Input
-                                    value={name}
-                                    onValueChange={setName}
-                                    label="Họ và tên"
-                                    variant="bordered"
-                                    placeholder="Nhập tên của bạn"
-                                    classNames={{
-                                        input: "text-lg",
-                                        label: "text-pink-600"
-                                    }}
-                                />
-                                <Textarea
-                                    value={feedback}
-                                    onValueChange={setFeedback}
-                                    label="Lời chúc"
-                                    variant="bordered"
-                                    placeholder="Nhập lời chúc của bạn"
-                                    classNames={{
-                                        input: "text-md",
-                                        label: "text-pink-600"
-                                    }}
-                                />
-                                <div className="flex w-full items-center justify-end gap-2">
-                                    <p className="text-[10px] text-pink-600 opacity-70">
-                                        <Link
-                                            className="text-[10px] text-pink-700 underline"
-                                            href="https://guides.github.com/features/mastering-markdown/"
-                                            rel="noreferrer"
-                                            target="_blank"
-                                        >
-                                            Markdown
-                                        </Link>
-                                        &nbsp;được hỗ trợ.
-                                    </p>
-                                </div>
-                            </CardBody>
-
-                            <Divider className="bg-pink-300" />
-
-                            <CardFooter className="flex justify-end p-4">
-                                <Button 
-                                    onPress={handleSubmit}
-                                    startContent={<SendIcon size={16} />}
-                                    className="bg-pink-500 text-white font-bold px-8" 
-                                    radius="full"
+                        <div className="flex w-full items-center justify-end gap-2 px-1">
+                            <p className="text-xs text-pink-600">
+                                <Link
+                                    className="text-pink-700 hover:text-pink-800"
+                                    href="https://guides.github.com/features/mastering-markdown/"
+                                    rel="noreferrer"
+                                    target="_blank"
                                 >
-                                    Gửi ngay
-                                </Button>
-                            </CardFooter>
-                        </Card>
-                    </div>
-
-                    {/* BÊN PHẢI: DANH SÁCH LỜI CHÚC */}
-                    <div className="flex flex-col gap-4 w-full max-w-sm mx-auto lg:mx-0 lg:max-w-md">
-                        <h3 className="text-white text-xl font-semibold border-l-4 border-pink-500 pl-3 mb-2">
-                            Lời chúc mới nhất
-                        </h3>
-                        
-                        <div className="flex flex-col gap-3 max-h-[450px] overflow-y-auto pr-2 custom-scrollbar">
-                            <AnimatePresence mode="popLayout">
-                                {wishes.length === 0 ? (
-                                    <p className="text-gray-400 italic">Chưa có lời chúc nào, hãy viết gì đó nhé!</p>
-                                ) : (
-                                    wishes.map((item) => (
-                                        <motion.div
-                                            key={item.id}
-                                            initial={{ opacity: 0, x: 20 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            exit={{ opacity: 0, scale: 0.9 }}
-                                            className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-2xl shadow-lg"
-                                        >
-                                            <div className="flex justify-between items-start mb-1">
-                                                <span className="text-pink-400 font-bold text-sm">@{item.name}</span>
-                                                <span className="text-[10px] text-gray-400">{item.time}</span>
-                                            </div>
-                                            <p className="text-white text-sm leading-relaxed">
-                                                {item.content}
-                                            </p>
-                                        </motion.div>
-                                    ))
-                                )}
-                            </AnimatePresence>
+                                    Markdown
+                                </Link>
+                                &nbsp;được hỗ trợ.
+                            </p>
                         </div>
-                    </div>
 
+                        <Divider className="my-2 bg-pink-300"/>
+
+                        <CardFooter className="flex w-full items-center justify-end">
+                            <Button
+                                startContent={<SendIcon size={12}/>}
+                                className="bg-pink-500 text-white hover:bg-pink-600"
+                                size="sm"
+                                onPress={handleSubmit}
+                            >
+                                Gửi
+                            </Button>
+                        </CardFooter>
+                    </Card>
+                </div>
+
+                {/* Cột phải: Danh sách lời chúc */}
+                <div className={`flex flex-col items-center w-full md:w-1/2 transition-all duration-700 ease-in-out origin-right ${
+                    showWishes ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none md:w-0"
+                }`}>
+                    <Spacer y={24} className="hidden md:block"/>
+                    <Spacer y={6} className="md:hidden"/>
+
+                    <h2 className="text-2xl font-bold text-white mb-4">Lời chúc từ mọi người</h2>
+
+                    <ScrollShadow className="w-full max-w-sm max-h-[60vh] space-y-3 pr-1">
+                        {wishes.map((wish) => (
+                            <Card key={wish.id} className="bg-pink-100/90 backdrop-blur-sm">
+                                <CardBody className="py-3 px-4">
+                                    <div className="flex items-center justify-between mb-1">
+                                        <p className="text-sm font-bold text-pink-800">{wish.name}</p>
+                                        <p className="text-[10px] text-pink-400">{wish.createdAt}</p>
+                                    </div>
+                                    <p className="text-sm text-pink-700 whitespace-pre-wrap">{wish.message}</p>
+                                </CardBody>
+                            </Card>
+                        ))}
+                    </ScrollShadow>
                 </div>
             </div>
         </div>
