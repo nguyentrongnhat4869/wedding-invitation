@@ -35,7 +35,7 @@ export default function SectionFive() {
                             <div className="relative h-[300px]">
                                 <Image
                                     alt="Wedding table setting with pink roses"
-                                    src="/home.jpg"
+                                    src="/nhatrai.jpg"
                                     fill
                                     objectFit="cover"
                                 />
@@ -77,7 +77,7 @@ export default function SectionFive() {
                             <div className="relative h-[300px]">
                                 <Image
                                     alt="Wedding table setting with pink roses"
-                                    src="/home.jpg"
+                                    src="/nhagai.jpg"
                                     layout="fill"
                                     objectFit="cover"
                                 />
