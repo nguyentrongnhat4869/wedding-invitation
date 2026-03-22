@@ -37,7 +37,7 @@ export default function SectionFive() {
                                     alt="Wedding table setting with pink roses"
                                     src="/nhatrai.jpg"
                                     fill
-                                    objectFit="cover"
+                                    className="object-contain"
                                 />
                             </div>
                         </CardBody>
@@ -79,7 +79,7 @@ export default function SectionFive() {
                                     alt="Wedding table setting with pink roses"
                                     src="/nhagai.jpg"
                                     layout="fill"
-                                    objectFit="cover"
+                                    className="object-contain"
                                 />
                             </div>
                         </CardBody>
