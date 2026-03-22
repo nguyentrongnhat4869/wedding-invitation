@@ -124,7 +124,7 @@ export default function SectionOne() {
                         </div>
                     </div>
                     <div>
-                        <MagneticButton>
+                        {/* <MagneticButton>
                             <Button
                                 className="mt-4"
                                 color={"primary"}
@@ -135,7 +135,7 @@ export default function SectionOne() {
                             >
                                 Xác nhận tham dự
                             </Button>
-                        </MagneticButton>
+                        </MagneticButton> */}
                         <Modal
                             isOpen={isOpen}
                             onOpenChange={onOpenChange}
