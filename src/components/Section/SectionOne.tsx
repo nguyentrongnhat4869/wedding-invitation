@@ -110,7 +110,7 @@ export default function SectionOne() {
             <div className="relative w-full h-full flex flex-col justify-center items-center"
             >
                 <div className="flex flex-col justify-center items-center ">
-                    <h1 className="md:text-8xl text-4xl font-bold text-blue-300 mt-10 md:mt-56 text-center sm:text-left --font-geist-mono">
+                    <h1 className="md:text-8xl text-4xl font-bold text-blue-300 mt-24 md:mt-56 text-center sm:text-left --font-geist-mono">
                         <span className="block sm:inline --font-geist-mono">Trọng Nhật </span>
                         <span className="block sm:inline">&hearts;</span>
                         <span className="block sm:inline">Thảo Anh</span>
